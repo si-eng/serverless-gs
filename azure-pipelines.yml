@@ -23,5 +23,5 @@ jobs:
   - script: 
       cd myservice
   - script: |
-      serverless deploy -c serverless.yml
+      serverless deploy 
     displayName: 'Deploy Serverless Application to Dev Environment'
