@@ -22,7 +22,7 @@ jobs:
     displayName: 'Install Serverless Framework and Dependencies'
 
   - script: |
-      
+      npm install
       cd myservice
       ls
       npm install 
