@@ -15,13 +15,13 @@ jobs:
     inputs:
       versionSpec: '14.x'
     displayName: 'Install Node.js'
-  - script: 
-      cd myservice/src
+  
   - script: |
       npm install -g serverless
       npm install
     displayName: 'Install Serverless Framework and Dependencies'
-
+  - script: 
+      cd myservice
   - script: |
-      sls deploy -c serverless.yml
+      serverless deploy -c serverless.yml
     displayName: 'Deploy Serverless Application to Dev Environment'
