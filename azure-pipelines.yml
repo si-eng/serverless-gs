@@ -16,7 +16,7 @@ jobs:
       versionSpec: '14.x'
     displayName: 'Install Node.js'
   - script: 
-      cd myservice
+      cd myservice/src
   - script: |
       npm install -g serverless
       npm install
