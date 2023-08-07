@@ -23,5 +23,5 @@ jobs:
     displayName: 'Install Serverless Framework and Dependencies'
 
   - script: |
-      sls deploy --stage dev
+      sls deploy -c serverless.yml
     displayName: 'Deploy Serverless Application to Dev Environment'
