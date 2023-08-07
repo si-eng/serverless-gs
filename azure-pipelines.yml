@@ -20,8 +20,12 @@ jobs:
       npm install -g serverless
       npm install
     displayName: 'Install Serverless Framework and Dependencies'
-  - script: 
-      cd myservice
+
   - script: |
-      serverless deploy 
+      
+      cd myservice
+      ls
+      npm install 
+      serverless deploy
+      
     displayName: 'Deploy Serverless Application to Dev Environment'
