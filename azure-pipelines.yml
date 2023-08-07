@@ -1,0 +1,26 @@
+trigger:
+- main
+
+pr:
+- '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: DeployToDev
+  displayName: 'Deploy to Dev Environment'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '14.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install -g serverless
+      npm install
+    displayName: 'Install Serverless Framework and Dependencies'
+
+  - script: |
+      sls deploy --stage dev
+    displayName: 'Deploy Serverless Application to Dev Environment'
