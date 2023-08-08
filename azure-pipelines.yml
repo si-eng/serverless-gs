@@ -1,25 +1,34 @@
-trigger:
-- main
-
-pr:
-- '*'
-
-pool:
-  vmImage: 'ubuntu-latest'
-
 jobs:
-- job: DeployToDev
-  displayName: 'Deploy to Dev Environment'
+- job: DeployUsingAzureCLI
   steps:
+  - checkout: self
+
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+
+  - script: |
+      az login --service-principal -u '6de9e89a-ab9a-441f-8d82-8116e98b681c' -p 'zAI8Q~K4Uez4N0NuEW_CKUHO5qqZ~~82puwdUcsD' --tenant 'e1ada6e8-9c72-4ff7-84bd-d0ae1c8d86fe'
+      az account set --subscription '899f8574-cccc-4d2a-af0d-b5caa6e72f89'
+      
+    displayName: 'Azure CLI Login'
+
+  - script: |
+      # Use Azure CLI commands here
+      az group list --output table
+    displayName: 'Execute Azure CLI Commands'
+
   - task: NodeTool@0
     inputs:
-      versionSpec: '18.x'
+      versionSpec: '14.x'
     displayName: 'Install Node.js'
   
   - script: |
       npm install -g serverless
       npm install
     displayName: 'Install Serverless Framework and Dependencies'
+
   - task: AzureCLI@2
     inputs:
       scriptType: 'bash'
@@ -27,15 +36,6 @@ jobs:
       inlineScript: |
         npm install
         cd myservice
-        ls
         npm install 
         serverless deploy
-        
-  - script: |
-      npm install
-      cd myservice
-      ls
-      npm install 
-      serverless deploy
-      
     displayName: 'Deploy Serverless Application to Dev Environment'
