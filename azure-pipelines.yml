@@ -30,7 +30,7 @@ jobs:
       inlineScript: |
         sudo cd myservice
         sudo npm install
-        sudo serverless deploy
+        sls deploy
       addSpnToEnvironment: true
 
 
