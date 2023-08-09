@@ -28,12 +28,9 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az account show
-        az resource list
-         cd myservice
-         npm install 
-         serverless deploy
-     
-     
+        sudo cd myservice
+        sudo npm install
+        sudo serverless deploy
+      addSpnToEnvironment: true
 
 
