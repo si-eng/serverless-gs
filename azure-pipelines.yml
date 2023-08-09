@@ -28,6 +28,8 @@ jobs:
      scriptType: 'bash'
      scriptLocation: 'inlineScript'
      inlineScript: |
+      az account show
+      az resource list
        cd myservice
        npm install 
        serverless deploy
