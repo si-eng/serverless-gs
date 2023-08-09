@@ -28,6 +28,7 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
+        az login --service-principal -u 'da8af8da-60e7-4e66-af6e-efecc931acff' -p '5X58Q~~QKQPxGuxHWFCtIR1xeaAYBV1dmWYeQaPj' --tenant 'e1ada6e8-9c72-4ff7-84bd-d0ae1c8d86fe'
         cd myservice
         npm install
         sls deploy
