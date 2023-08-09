@@ -60,9 +60,8 @@ jobs:
 
   - script: |
       # Replace with your actual Serverless Framework commands
-      cd myservice
-      npm install
-      sls deploy
+      
     displayName: 'Deploy Serverless Application'
+  
 
 
