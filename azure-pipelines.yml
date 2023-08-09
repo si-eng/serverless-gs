@@ -1,3 +1,38 @@
+# trigger:
+# - main
+
+# pr:
+# - '*'
+
+# pool:
+#   vmImage: 'ubuntu-latest'
+
+# jobs:
+# - job: DeployToDev
+#   displayName: 'Deploy to Dev Environment'
+#   steps:
+#   - task: NodeTool@0
+#     inputs:
+#       versionSpec: '14.x'
+#     displayName: 'Install Node.js'
+  
+#   - script: |
+#       npm install -g serverless
+#       npm install
+      
+#     displayName: 'Install Serverless Framework and Dependencies'
+ 
+#   - task: AzureCLI@1
+#     inputs:
+#       azureSubscription: 'conn_for_serverless'
+     
+#       scriptLocation: 'inlineScript'
+#       inlineScript: |
+#         cd myservice
+#         npm install
+#         sls deploy
+#       addSpnToEnvironment: true
+
 trigger:
 - main
 
@@ -22,17 +57,19 @@ jobs:
       
     displayName: 'Install Serverless Framework and Dependencies'
  
-  - task: AzureCLI@1
+  - task: AzureCLI@2
+    displayName: 'Login using Service Principal'
     inputs:
       azureSubscription: 'conn_for_serverless'
-     
+      scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
         az login --service-principal -u 'da8af8da-60e7-4e66-af6e-efecc931acff' -p '5X58Q~~QKQPxGuxHWFCtIR1xeaAYBV1dmWYeQaPj' --tenant 'e1ada6e8-9c72-4ff7-84bd-d0ae1c8d86fe'
+        az account set --subscription '899f8574-cccc-4d2a-af0d-b5caa6e72f89'
         cd myservice
         npm install
         sls deploy
-      addSpnToEnvironment: true
+
 
 # trigger:z
 # - main
