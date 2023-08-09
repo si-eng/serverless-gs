@@ -26,7 +26,7 @@ jobs:
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
-        az login 
+     
         cd myservice
         npm install 
         serverless deploy
