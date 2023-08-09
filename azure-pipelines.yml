@@ -24,15 +24,15 @@ jobs:
  
   - task: AzureCLI@2
     inputs:
-     azureSubscription: 'azurecli'
-     scriptType: 'bash'
-     scriptLocation: 'inlineScript'
-     inlineScript: |
-      az account show
-      az resource list
-       cd myservice
-       npm install 
-       serverless deploy
+      azureSubscription: 'conn_for_serverless'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az account show
+        az resource list
+         cd myservice
+         npm install 
+         serverless deploy
      
      
 
