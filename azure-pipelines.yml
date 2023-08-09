@@ -34,76 +34,33 @@
 #       addSpnToEnvironment: true
 
 trigger:
-
 - main
-
- 
-
 pr:
-
 - '*'
-
- 
-
 pool:
-
   vmImage: 'ubuntu-latest'
-
- 
-
 jobs:
-
 - job: DeployToDev
-
   displayName: 'Deploy to Dev Environment'
-
   steps:
-
   - task: NodeTool@0
-
     inputs:
-
       versionSpec: '14.x'
-
     displayName: 'Install Node.js'
-
-  
-
   - script: |
-
       npm install -g serverless
-
       npm install
-
-      
-
     displayName: 'Install Serverless Framework and Dependencies'
-
- 
-
   - task: AzureCLI@2
-
-    displayName: 'Login using Managed Identity'
-
+    displayName: 'Login using Personal Access Token'
     inputs:
-
       azureSubscription: 'conn_for_serverless'
-
-      scriptType: 'bash'
-
       scriptLocation: 'inlineScript'
-
       inlineScript: |
-
-        az account show
-
+        az devops login --organization 'https://dev.azure.com/Sakshi-practice' --token 'qtiwmscx5njcxunbbv4gad76i4eyr42dsrjznpbu4zzm43okntrq'
         cd myservice
-
         npm install
-
         sls deploy
-
-
 # trigger:z
 # - main
 
