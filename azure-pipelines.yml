@@ -15,13 +15,21 @@ jobs:
     inputs:
       versionSpec: '14.x'
     displayName: 'Install Node.js'
-
-
+  
   - script: |
       npm install -g serverless
       npm install
     displayName: 'Install Serverless Framework and Dependencies'
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: 'fsa'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        az login 
+        cd myservice
+        npm install 
+        serverless deploy
 
-  - script: |
-      sls deploy --stage dev
+
     displayName: 'Deploy Serverless Application to Dev Environment'
