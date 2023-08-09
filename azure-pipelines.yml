@@ -19,19 +19,19 @@ jobs:
   - script: |
       npm install -g serverless
       npm install
-       cd myservice
-        npm install 
-        serverless deploy
+      
     displayName: 'Install Serverless Framework and Dependencies'
-  # - task: AzureCLI@2
-  #   inputs:
-  #     azureSubscription: 'fsa'
-  #     scriptType: 'bash'
-  #     scriptLocation: 'inlineScript'
-  #     inlineScript: |
+ 
+  - task: AzureCLI@2
+    inputs:
+     azureSubscription: 'azurecli'
+     scriptType: 'bash'
+     scriptLocation: 'inlineScript'
+     inlineScript: |
+       cd myservice
+       npm install 
+       serverless deploy
      
-  #       cd myservice
-  #       npm install 
-  #       serverless deploy
+     
 
 
