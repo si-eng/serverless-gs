@@ -53,7 +53,8 @@ jobs:
     displayName: 'Install Serverless Framework and Dependencies'
   - task: AzureCLI@0
     inputs:
-     connectedServiceName: # string. Required when connectedServiceNameSelector = connectedServiceName. Azure Classic Subscription. 
+     connectedServiceName: 'conn_for_serverless'
+     #connectedServiceNameARM: 
      scriptLocation: 'scriptPath' # 'inlineScript' | 'scriptPath'. Required. Script Location. Default: scriptPath.
      scriptPath: # string. Required when scriptLocation = scriptPath. Script Path. 
      inlineScript: |
