@@ -50,17 +50,21 @@ jobs:
   - script: |
       npm install -g serverless
       npm install
-    displayName: 'Install Serverless Framework and Dependencies'
-  - task: AzureCLI@0
-    inputs:
-     #connectedServiceName: 'conn_for_serverless'
-     connectedServiceNameARM: 'conn_for_serverless'
-     scriptLocation: 'scriptPath' # 'inlineScript' | 'scriptPath'. Required. Script Location. Default: scriptPath.
-     scriptPath: # string. Required when scriptLocation = scriptPath. Script Path. 
-     inlineScript: |
-      cd myservice 
+      cd myservice
       npm install 
-      serverless deploy
+      sls deploy
+
+    displayName: 'Install Serverless Framework and Dependencies'
+  # - task: AzureCLI@0
+  #   inputs:
+  #    #connectedServiceName: 'conn_for_serverless'
+  #    connectedServiceNameARM: 'conn_for_serverless'
+  #    scriptLocation: 'scriptPath' # 'inlineScript' | 'scriptPath'. Required. Script Location. Default: scriptPath.
+  #    scriptPath: # string. Required when scriptLocation = scriptPath. Script Path. 
+  #    inlineScript: |
+  #     cd myservice 
+  #     npm install 
+  #     serverless deploy
 
 # trigger:z
 # - main
