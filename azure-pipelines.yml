@@ -31,7 +31,7 @@ jobs:
         az login --service-principal -u 'f47bfeb4-70cc-4580-b0bd-ed50eb596e52' -p 'Ffg8Q~6BLCrSdpL39e.q9geVG3EfGrtom5zaragh' --tenant 'e1ada6e8-9c72-4ff7-84bd-d0ae1c8d86fe'
         cd myservice
         npm install
-        sls deploy -p /myservice/serverless.yml
+        sls deploy -Path /myservice/serverless.yml
       azurePowerShellVersion: 'LatestVersion'
 
  
