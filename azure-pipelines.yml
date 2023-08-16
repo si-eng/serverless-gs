@@ -31,6 +31,7 @@ jobs:
         cd myservice
         npm install
         sls deploy
+        az account clear
       addSpnToEnvironment: true
  
  
