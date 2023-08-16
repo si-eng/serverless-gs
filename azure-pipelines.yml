@@ -22,23 +22,25 @@ jobs:
       
     displayName: 'Install Serverless Framework and Dependencies'
  
-  # - task: AzureCLI@2
-  #   inputs:
-  #     azureSubscription: 'conn_for_serverless'
-  #     scriptType: 'bash'
-  #     scriptLocation: 'inlineScript'
-  #     inlineScript: |
-  #       cd myservice
-  #       npm install
-  #       sls deploy
-  #     addSpnToEnvironment: true
-  - task: Bash@3
+  - task: AzureCLI@2
     inputs:
-      targetType: 'inline'
-      script: |
+      azureSubscription: 'conn_for_serverless'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
         cd myservice
         npm install
         sls deploy
+      addSpnToEnvironment: true
+ 
+ 
+  # - task: Bash@3
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: |
+  #       cd myservice
+  #       npm install
+  #       sls deploy
 
 
 
